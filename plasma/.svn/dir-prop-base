@@ -1,0 +1,15 @@
+K 15
+reviewboard:url
+V 32
+http://reviewboard.vidsolbach.de
+K 10
+svn:ignore
+V 52
+.libs
+Makefile
+Makefile.in
+*.moc
+.cproject
+.project
+
+END

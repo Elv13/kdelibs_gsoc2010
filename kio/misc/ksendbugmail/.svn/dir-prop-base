@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 52
+.deps
+ksendbugmail
+.libs
+Makefile
+Makefile.in
+*.moc
+
+END

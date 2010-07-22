@@ -1,0 +1,21 @@
+K 10
+svn:ignore
+V 192
+configui.cpp
+configui.h
+.deps
+kspell2ui.cpp
+kspell2ui.h
+kspellui.cpp
+kspellui.h
+libkspell2.la
+libkspell2_noinst.la
+.libs
+Makefile
+Makefile.in
+*.moc
+semantic.cache
+test_dialog
+test_highlighter
+
+END

@@ -1,0 +1,10 @@
+K 10
+svn:ignore
+V 65
+Makefile
+Makefile.in
+javascript-php.xml
+html-php.xml
+css-php.xml
+
+END

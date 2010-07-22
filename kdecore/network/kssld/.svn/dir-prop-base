@@ -1,0 +1,16 @@
+K 10
+svn:ignore
+V 102
+.deps
+kded_kssld.la
+*.kidl
+kssld
+kssld.kidl
+kssld_skel.cpp
+.libs
+Makefile
+Makefile.in
+*.moc
+*_skel.c*
+
+END

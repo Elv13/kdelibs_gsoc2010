@@ -1,0 +1,17 @@
+K 10
+svn:ignore
+V 141
+.deps
+example
+ghostviewtest
+kpartstest
+libnotepad.la
+libnotepadpart.la
+.libs
+libspellcheckplugin.la
+Makefile
+Makefile.in
+*.moc
+normalktmtest
+
+END

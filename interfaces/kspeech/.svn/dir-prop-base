@@ -1,0 +1,26 @@
+K 10
+svn:ignore
+V 170
+*~
+*.closure
+core
+core.*
+.deps
+Doxyfile
+*.kidl
+*.la
+*_la_closure.cpp
+.libs
+*.lo
+*.loT
+Makefile
+Makefile.in
+Makefile.rules.in
+*.moc
+*.moc.cpp
+*.o
+*_skel.cpp
+*.so
+*_stub.*
+
+END

@@ -1,0 +1,34 @@
+K 10
+svn:ignore
+V 404
+*.kidl
+*.moc
+*_skel.c*
+.deps
+.libs
+CMakeFiles
+DartTestfile.txt
+Doxyfile
+Makefile
+Makefile.in
+cmake_install.cmake
+convert_key
+fakes_nonpic.c
+install_icons.cmake
+kappdcopiface.kidl
+kappdcopiface_skel.cpp
+kde-config
+kde-config.cpp
+kdebugdcopiface.kidl
+kdebugdcopiface_skel.cpp
+kdemacros.h
+kgrantpty
+ksycoca.kidl
+ksycoca_skel.cpp
+libkdecore.la
+libkdefakes.la
+libkdefakes_nonpic.a
+stamp-h3
+vsnprintf_nonpic.c
+
+END

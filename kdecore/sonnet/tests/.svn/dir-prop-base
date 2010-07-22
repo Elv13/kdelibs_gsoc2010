@@ -1,0 +1,16 @@
+K 10
+svn:ignore
+V 118
+backgroundtest
+.deps
+.libs
+Makefile
+Makefile.in
+*.moc
+test
+test_configdialog
+test_dialog
+test_filter
+test_highlighter
+
+END

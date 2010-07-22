@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 55
+.deps
+libkhtmlhtml.la
+.libs
+Makefile
+Makefile.in
+*.moc
+
+END

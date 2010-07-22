@@ -1,0 +1,31 @@
+K 10
+svn:ignore
+V 369
+*.kidl
+*.moc
+*.moc.cpp
+*_skel.c*
+.deps
+.libs
+CMakeFiles
+DartTestfile.txt
+Doxyfile
+Makefile
+Makefile.in
+cmake_install.cmake
+core
+dummy.cpp
+f.cpp
+install_icons.cmake
+kmainwindowiface.kidl
+kmainwindowiface_skel.cpp
+kshortcutdialog_advanced.cpp
+kshortcutdialog_advanced.h
+kshortcutdialog_simple.cpp
+kshortcutdialog_simple.h
+kspellui.cpp
+kspellui.h
+libkdeui.la
+libkspell.la
+
+END

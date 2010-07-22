@@ -1,0 +1,25 @@
+K 10
+svn:ignore
+V 233
+.deps
+Doxyfile
+kdeinit
+kdeinit_klauncher.cpp
+kdeinit_klauncher.la.cpp
+kdeinit_shutdown
+kdeinit_wrapper
+kdostartupconfig
+kinit
+kioslave
+klauncher
+klauncher.la
+kshell
+kstartupconfig
+kwrapper
+.libs
+lnusertemp
+Makefile
+Makefile.in
+*.moc
+
+END

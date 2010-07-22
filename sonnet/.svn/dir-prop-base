@@ -1,0 +1,16 @@
+K 10
+svn:ignore
+V 113
+backgroundtest
+.deps
+Doxyfile
+libkspell2base.la
+.libs
+Makefile
+Makefile.in
+*.moc
+semantic.cache
+test
+test_filter
+
+END

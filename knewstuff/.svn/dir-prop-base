@@ -1,0 +1,15 @@
+K 10
+svn:ignore
+V 95
+.deps
+Doxyfile
+ghns
+khotnewstuff
+libknewstuff.la
+.libs
+Makefile
+Makefile.in
+*.moc
+testnewstuff
+
+END

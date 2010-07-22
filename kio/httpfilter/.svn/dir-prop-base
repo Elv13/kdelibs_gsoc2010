@@ -1,0 +1,12 @@
+K 10
+svn:ignore
+V 65
+.deps
+Doxyfile
+libhttpfilter.la
+.libs
+Makefile
+Makefile.in
+*.moc
+
+END

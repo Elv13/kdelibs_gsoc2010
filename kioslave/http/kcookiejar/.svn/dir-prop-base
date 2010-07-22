@@ -1,0 +1,19 @@
+K 10
+svn:ignore
+V 191
+.deps
+kcookiejar
+kcookiejar.la
+kcookieserver.kidl
+kcookieserver_skel.cpp
+kded_kcookiejar.la
+kdeinit_kcookiejar.cpp
+kdeinit_kcookiejar.la.cpp
+*.kidl
+.libs
+Makefile
+Makefile.in
+*.moc
+*_skel.c*
+
+END

@@ -1,0 +1,12 @@
+K 10
+svn:ignore
+V 82
+.deps
+ktexteditor_kdatatool.la
+.libs
+Makefile
+Makefile.in
+Makefile.rules.in
+*.moc
+
+END

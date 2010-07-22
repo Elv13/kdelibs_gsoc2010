@@ -1,0 +1,22 @@
+K 10
+svn:ignore
+V 205
+checkXML
+.deps
+Doxyfile
+genshortcutents
+kbzip2filter.cpp
+kde-standards-accels.entities
+kio_ghelp.la
+kio_help.la
+libkbzipfilter_dummy.la
+.libs
+Makefile
+Makefile.in
+meinproc
+*.moc
+test
+test.cc
+xslt_pure.cpp
+
+END

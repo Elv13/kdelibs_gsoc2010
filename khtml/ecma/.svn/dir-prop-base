@@ -1,0 +1,26 @@
+K 10
+svn:ignore
+V 307
+.deps
+domparser.lut.h
+kjs_css.lut.h
+kjs_dom.lut.h
+kjs_events.lut.h
+kjs_html.lut.h
+kjs_mozilla.lut.h
+kjs_navigator.lut.h
+kjs_range.lut.h
+kjs_traversal.lut.h
+kjs_views.lut.h
+kjs_window.lut.h
+kjs_context2d.lut.h
+libkjs_html.la
+.libs
+Makefile
+Makefile.in
+*.moc
+testecma
+xmlhttprequest.lut.h
+xmlserializer.lut.h
+
+END

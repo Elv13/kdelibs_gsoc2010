@@ -1,0 +1,21 @@
+K 10
+svn:ignore
+V 202
+.deps
+imlabelbase.cpp
+imlabelbase.h
+*.kidl
+kimiface.kidl
+kimiface_stub.cpp
+kimiface_stub.h
+kimproxyiface.kidl
+kimproxyiface_skel.cpp
+libkimproxy.la
+.libs
+Makefile
+Makefile.in
+*.moc
+*_skel.c*
+*_stub.cpp
+
+END

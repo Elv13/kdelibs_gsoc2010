@@ -1,0 +1,22 @@
+K 10
+svn:ignore
+V 291
+.deps
+Doxyfile
+kfstest
+knotifywidgetbase.cpp
+knotifywidgetbase.h
+kpropertiesdesktopadvbase.cpp
+kpropertiesdesktopadvbase.h
+kpropertiesdesktopbase.cpp
+kpropertiesdesktopbase.h
+kpropertiesmimetypebase.cpp
+kpropertiesmimetypebase.h
+libkfile.la
+libkfileshare.la
+.libs
+Makefile
+Makefile.in
+*.moc
+
+END

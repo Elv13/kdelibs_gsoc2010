@@ -1,0 +1,17 @@
+K 10
+svn:ignore
+V 131
+*.closure
+.deps
+kdewidgets.cpp
+kdewidgets.la
+kdewidgets.moc
+*.la
+.libs
+*.lo
+Makefile
+Makefile.in
+makekdewidgets
+qrc_kdewidgets.cpp
+
+END

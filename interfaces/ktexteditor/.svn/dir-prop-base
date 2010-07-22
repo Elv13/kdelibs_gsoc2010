@@ -1,0 +1,18 @@
+K 10
+svn:ignore
+V 159
+.deps
+Doxyfile
+editorchooser_ui.cpp
+editorchooser_ui.h
+*.kidl
+ktexteditorkabcbridge.la
+libktexteditor.la
+.libs
+Makefile
+Makefile.in
+*.moc
+*_skel.c*
+*_skel.cpp
+
+END

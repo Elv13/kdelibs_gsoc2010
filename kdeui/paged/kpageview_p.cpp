@@ -101,9 +101,11 @@ KPageListView::KPageListView( QWidget *parent )
   setMovement( QListView::Static );
   setVerticalScrollMode( QListView::ScrollPerPixel );
 
-  QFont boldFont( font() );
-  boldFont.setBold( true );
-  setFont( boldFont );
+  setStyleSheet("background-color:transparent;border:0px;padding:0px;");
+  setIconSize(QSize(24,24));
+  //QFont boldFont( font() );
+  //boldFont.setBold( true );
+  //setFont( boldFont );
 
   setItemDelegate( new KPageListViewDelegate( this ) );
 }
@@ -155,10 +157,12 @@ KPageTreeView::KPageTreeView( QWidget *parent )
  : QTreeView( parent )
 {
   header()->hide();
+  setStyleSheet("background-color:transparent;border:0px;padding:0px;");
 }
 
 void KPageTreeView::setModel( QAbstractItemModel *model )
 {
+  setStyleSheet("background-color:transparent;border:0px;padding:0px;");
   connect( model, SIGNAL( layoutChanged() ), this, SLOT( updateWidth() ) );
 
   QTreeView::setModel( model );
@@ -362,7 +366,7 @@ void KPageTabbedView::dataChanged( const QModelIndex &index, const QModelIndex& 
 KPageListViewDelegate::KPageListViewDelegate( QObject *parent )
  : QAbstractItemDelegate( parent )
 {
-    mIconSize = KIconLoader::global()->currentSize( KIconLoader::Dialog );
+    mIconSize = 24;//KIconLoader::global()->currentSize( KIconLoader::Dialog );
 
     connect(KGlobalSettings::self(), SIGNAL( iconChanged( int ) ), this, SLOT( iconSettingsChanged( int ) ) );
 }
@@ -372,7 +376,7 @@ void KPageListViewDelegate::iconSettingsChanged( int group )
     if ( group == KIconLoader::Dialog ) {
         const int iconSize = KIconLoader::global()->currentSize( KIconLoader::Dialog );
         if ( mIconSize != iconSize ) {
-            mIconSize = iconSize;
+            mIconSize = 24;
             emit sizeHintChanged( QModelIndex() );
         }
     }
@@ -411,7 +415,7 @@ void KPageListViewDelegate::paint( QPainter *painter, const QStyleOptionViewItem
   int hp = pixmap.height();
 
   QTextLayout iconTextLayout( text, option.font );
-  QTextOption textOption( Qt::AlignHCenter );
+  QTextOption textOption( Qt::AlignLeft );
   iconTextLayout.setTextOption( textOption );
   int maxWidth = qMax( 3 * wp, 8 * fm.height() );
   layoutText( &iconTextLayout, maxWidth );
@@ -432,9 +436,9 @@ void KPageListViewDelegate::paint( QPainter *painter, const QStyleOptionViewItem
     painter->setPen( option.palette.color( cg, QPalette::Text ) );
   }
 
-  painter->drawPixmap( option.rect.x() + (option.rect.width()/2)-(wp/2), option.rect.y() + 5, pixmap );
+  painter->drawPixmap( option.rect.x() + 4, option.rect.y() + 3, pixmap );
   if ( !text.isEmpty() )
-    iconTextLayout.draw( painter, QPoint( option.rect.x() + (option.rect.width()/2)-(maxWidth/2), option.rect.y() + hp+7 ) );
+    iconTextLayout.draw( painter, QPoint(  wp + 14, option.rect.y() + 7 ) );
 
   painter->setPen( pen );
 
@@ -475,7 +479,7 @@ QSize KPageListViewDelegate::sizeHint( const QStyleOptionViewItem &option, const
 
   width = qMax( wt, wp ) + gap;
 
-  return QSize( width, height );
+  return QSize( wp + wt + 14, hp +7 );
 }
 
 void KPageListViewDelegate::drawFocus( QPainter *painter, const QStyleOptionViewItem &option, const QRect &rect ) const

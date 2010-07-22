@@ -1,0 +1,16 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Service
+#Icon=icon
+ServiceTypes=KTextPlugin/Native
+X-KDE-Library=ktextnative_exec
+X-KDE-PluginInfo-Author=Wagner Reck
+X-KDE-PluginInfo-Email=wagner.reck@gmail.com
+X-KDE-PluginInfo-Name=Make Complete Rocs Tool Plugin
+X-KDE-PluginInfo-Version=0.0.1
+X-KDE-PluginInfo-Website=http://wiglot.wordpress.com
+X-KDE-PluginInfo-Category=Plugins
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=false
+Name=Make Complete
+Comment=Make all graphs complete. All actual edges will be removed.

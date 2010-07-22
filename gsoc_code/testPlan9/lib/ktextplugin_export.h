@@ -1,0 +1,20 @@
+#ifndef LIBKTEXTPLUGIN_EXPORT_H
+#define LIBKTEXTPLUGIN_EXPORT_H
+
+#include <kdemacros.h>
+
+#ifndef LIBKTEXTPLUGIN_EXPORT
+# if defined(MAKE_LIBKTEXTPLUGIN_LIB)
+   // We are building this library
+#  define LIBKTEXTPLUGIN_EXPORT KDE_EXPORT
+# else
+   // We are using this library
+#  define LIBKTEXTPLUGIN_EXPORT KDE_IMPORT
+# endif
+#endif
+
+# ifndef LIBKTEXTPLUGIN_EXPORT_DEPRECATED
+#  define LIBKTEXTPLUGIN_EXPORT_DEPRECATED KDE_DEPRECATED LIBKTEXTPLUGIN_EXPORT
+# endif
+
+#endif

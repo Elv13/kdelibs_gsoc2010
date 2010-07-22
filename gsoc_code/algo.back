@@ -1,0 +1,14 @@
+long long one;
+long long two;
+
+two = two << 16;
+two = two | (one >> 48);
+one = one << 16;
+one = ont | new;
+
+for (int i=0;i < size; i++) {
+  bool found = !(one ^ look[i][0]) && !(two ^ look[i][1]);
+}
+
+
+Q_PROPERTY( bool checked READ isChecked WRITE setChecked )

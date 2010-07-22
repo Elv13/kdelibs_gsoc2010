@@ -1,0 +1,91 @@
+#include "KtextEdit2.h"
+#include <QTextCursor>
+#include <QDebug>
+#include <QMouseEvent>
+#include <QApplication>
+#include <QRegExp>
+#include <KIcon>
+
+KTextEdit2::KTextEdit2(QWidget* parent) : 
+  KTextEdit(parent), 
+  m_buffer(QApplication::clipboard()), 
+  m_cirularBuffer(new QChar[8]), 
+  m_circularBufferStart(0), 
+  m_circularBufferEnd(0) 
+{
+  m_watchList << "[" << "123" << "87654321";
+}
+    
+void KTextEdit2::mouseReleaseEvent(QMouseEvent* event) 
+{
+  QTextCursor cur = textCursor();
+  qDebug() << "mouse: " << event->button();
+  
+  if ((event->button() == Qt::MidButton) || (event->button() == Qt::LeftButton)) {
+    cur.select(QTextCursor::WordUnderCursor);
+    QString word = cur.selectedText();
+    if (event->button() == Qt::MidButton) {
+      //cur.movePosition(QTextCursor::StartOfWord);
+      //int positionStart = tc.position();
+      //cur.movePosition(QTextCursor::EndOfWord);
+      qDebug() << "Button" << word;
+      emit actionTriggered(word,m_buffer->text(QClipboard::Selection));
+    }
+    else if (event->button() == Qt::LeftButton) {
+      emit actionTriggered(word);
+      qDebug() << "Button" ;
+      KTextEdit::mouseReleaseEvent(event);
+    }
+  }
+  else
+    KTextEdit::mouseReleaseEvent(event);
+}
+
+void KTextEdit2::contextMenuEvent(QContextMenuEvent* event) 
+{
+  QTextCursor cur = textCursor();
+  KMenu* aMenu = new KMenu(this);
+  emit contextMenuRequested(cur.selectedText(),aMenu);
+  aMenu->popup(event->pos());
+  //KTextEdit::contextMenuEvent(event);
+}
+
+void KTextEdit2::keyReleaseEvent(QKeyEvent* event) 
+{
+  //Implement a circular buffre algoritm and compare the string as fast as possible
+  if ((event->type() == QEvent::KeyRelease) && (m_watchList.size())) {
+    m_cirularBuffer[m_circularBufferEnd] = ((QKeyEvent*) event)->text()[0];
+    
+    if (m_circularBufferStart == (m_circularBufferEnd==7)?0:m_circularBufferEnd+1) 
+      m_circularBufferStart = (m_circularBufferStart==7)?0:m_circularBufferStart+1;
+    
+    
+    qDebug("start: %d End: %d m_cirularBuffer: ",m_circularBufferStart,m_circularBufferEnd);
+    qDebug() << m_cirularBuffer[0] << m_cirularBuffer[1] << m_cirularBuffer[2] << m_cirularBuffer[3] << m_cirularBuffer[4] << m_cirularBuffer[5] << m_cirularBuffer[6] << m_cirularBuffer[7] << "\n";
+    
+    uchar length = m_circularBufferEnd + (8-m_circularBufferStart);
+    //for (ushort j = m_watchList.size()-1; j >= 0;j--) {
+    for (ushort j = 0; j < m_watchList.size();j++) {
+      qDebug() << "Checking for:" << m_watchList[j] << " right: " << m_watchList[j].right(1) << "Buffer end:" << m_circularBufferEnd-1;
+      if (m_watchList[j].right(1) == m_cirularBuffer[m_circularBufferEnd-1]) {
+	uchar watchLength = m_watchList[j].size();
+	bool match = true;
+	qDebug() << "watchLength:" << watchLength << " length:" << length << " result:" << (((watchLength<length)?watchLength:length)-1);
+	for (uchar i = ((watchLength<length)?watchLength:length)-1; i > 0;i--) { //The first character have been checked above
+	  qDebug() << "Char: " << (((i+1) > (8-m_circularBufferStart))?(i+1)-(8-m_circularBufferStart):m_circularBufferStart+(i+1)-1) << " and " << m_watchList[j][watchLength-(i+1)] << " start:" << m_circularBufferStart << " end:" << m_circularBufferEnd << " i:" << i;
+	  if (m_cirularBuffer[((i+1) > (8-m_circularBufferStart))?(i+1)-(8-m_circularBufferStart):m_circularBufferStart+(i+1)-1] != m_watchList[j][watchLength-(i+1)]) {
+	    match = false;
+	    break;
+	  }
+	}
+	if (match) {
+	  qDebug() << "\n\n--Patern found" << m_watchList[j] << "--\n\n";
+	  emit paternTyped(m_paternValue[m_watchList[j]]);
+	}
+      }
+    }
+    
+    m_circularBufferEnd = (m_circularBufferEnd==7)?0:m_circularBufferEnd+1;
+  }
+  KTextEdit::keyReleaseEvent(event);
+}

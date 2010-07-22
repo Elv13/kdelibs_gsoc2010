@@ -1,0 +1,12 @@
+K 10
+svn:ignore
+V 60
+.deps
+kio_file
+kio_file.la
+.libs
+Makefile
+Makefile.in
+*.moc
+
+END

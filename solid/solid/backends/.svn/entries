@@ -1,0 +1,46 @@
+10
+
+dir
+1152814
+svn://anonsvn.kde.org/home/kde/trunk/KDE/kdelibs/solid/solid/backends
+svn://anonsvn.kde.org/home/kde
+
+
+
+2010-07-20T01:22:24.370907Z
+1151950
+promulo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+283d02a7-25f6-0310-bc7c-ecb5cbfe19da
+
+iokit
+dir
+
+upnp
+dir
+
+hal
+dir
+
+fakehw
+dir
+
+wmi
+dir
+
+kupnp
+dir
+

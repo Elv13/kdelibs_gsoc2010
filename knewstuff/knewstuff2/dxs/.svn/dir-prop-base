@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 51
+*.moc
+.deps
+.libs
+Makefile
+Makefile.in
+kdxspreview
+
+END

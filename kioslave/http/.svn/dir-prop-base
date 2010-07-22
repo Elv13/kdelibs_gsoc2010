@@ -1,0 +1,17 @@
+K 10
+svn:ignore
+V 191
+.deps
+Doxyfile
+kdeinit_kio_http_cache_cleaner.cpp
+kdeinit_kio_http_cache_cleaner.la.cpp
+kio_http
+kio_http_cache_cleaner
+kio_http_cache_cleaner.la
+kio_http.la
+.libs
+Makefile
+Makefile.in
+*.moc
+
+END

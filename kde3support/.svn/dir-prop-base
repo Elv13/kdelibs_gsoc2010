@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 61
+.deps
+libkde3support.la
+.libs
+Makefile
+Makefile.in
+dummy.cpp
+
+END

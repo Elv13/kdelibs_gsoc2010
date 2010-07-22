@@ -1,0 +1,18 @@
+K 10
+svn:ignore
+V 147
+.deps
+Doxyfile
+keygenwizard2.cpp
+keygenwizard2.h
+keygenwizard.cpp
+keygenwizard.h
+ksslconfig.h
+libkssl.la
+.libs
+Makefile
+Makefile.in
+*.moc
+stamp-h4
+
+END

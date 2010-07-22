@@ -1,0 +1,18 @@
+K 10
+svn:ignore
+V 79
+.deps
+kded_test.la
+*.kidl
+.libs
+Makefile
+Makefile.in
+*.moc
+*_skel.c*
+test.kidl
+
+K 13
+svn:mergeinfo
+V 0
+
+END

@@ -1,0 +1,13 @@
+K 10
+svn:ignore
+V 64
+.deps
+Makefile.in
+Makefile
+*.moc
+kateregression
+.libs
+katetest
+
+
+END

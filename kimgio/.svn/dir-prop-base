@@ -1,0 +1,23 @@
+K 10
+svn:ignore
+V 195
+.deps
+Doxyfile
+kimg_dds.la
+kimg_eps.la
+kimg_ico.la
+$(KIMGIO_EXR_MODULES)
+kimg_pcx.la
+kimg_psd.la
+kimg_rgb.la
+kimg_tga.la
+kimg_xcf.la
+kimg_xview.la
+.libs
+Makefile
+Makefile.in
+moc_*.cpp
+NOTES
+tags
+
+END

@@ -1,0 +1,153 @@
+10
+
+dir
+1152814
+svn://anonsvn.kde.org/home/kde/trunk/KDE/kdelibs/doc
+svn://anonsvn.kde.org/home/kde
+
+
+
+2010-04-24T14:40:45.470964Z
+1118361
+aacid
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+283d02a7-25f6-0310-bc7c-ecb5cbfe19da
+
+kdeoptions
+dir
+
+kjs
+dir
+
+common
+dir
+
+makekdewidgets
+dir
+
+kde4-config
+dir
+
+kded4
+dir
+
+checkXML
+dir
+
+preparetips
+dir
+
+kbuildsycoca4
+dir
+
+meinproc4
+dir
+
+qtoptions
+dir
+
+kross
+dir
+
+kcookiejar4
+dir
+
+TODO
+file
+
+
+
+
+2010-07-22T04:00:33.000000Z
+0069fdb9e2eafc4074204f1e69c6662e
+2008-11-07T14:27:38.983312Z
+881123
+jtamate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+724
+
+sonnet
+dir
+
+api
+dir
+
+kconfig_compiler
+dir
+
+kjscmd
+dir
+
+kdeinit4
+dir
+
+kioslave
+dir
+
+CMakeLists.txt
+file
+
+
+
+
+2010-07-22T04:00:33.000000Z
+8d6754184259ba8f62ff68416de35a31
+2008-11-12T19:53:27.784306Z
+883365
+lueck
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+559
+

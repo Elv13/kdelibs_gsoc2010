@@ -1,0 +1,89 @@
+10
+
+dir
+1152814
+svn://anonsvn.kde.org/home/kde/trunk/KDE/kdelibs/doc/kioslave
+svn://anonsvn.kde.org/home/kde
+
+
+
+2009-01-22T14:26:34.538976Z
+915167
+lueck
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+283d02a7-25f6-0310-bc7c-ecb5cbfe19da
+
+file
+dir
+
+http
+dir
+
+mailto
+dir
+
+help
+dir
+
+webdav
+dir
+
+data
+dir
+
+ftp
+dir
+
+rlogin
+dir
+
+telnet
+dir
+
+CMakeLists.txt
+file
+
+
+
+
+2010-07-22T04:00:33.000000Z
+8b633f32a6481008ed4ca785f830af9b
+2008-11-12T19:53:27.784306Z
+883365
+lueck
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+215
+

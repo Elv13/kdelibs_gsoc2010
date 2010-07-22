@@ -1,0 +1,24 @@
+K 10
+svn:ignore
+V 254
+array_object.lut.h
+date_object.lut.h
+.deps
+Doxyfile
+global.h
+lexer.lut.h
+libkjs.la
+libkjs_la.all_cpp.cpp
+.libs
+Makefile
+Makefile.in
+math_object.lut.h
+number_object.lut.h
+stamp-h5
+string_object.lut.h
+regexp_object.lut.h
+SunWS_cache
+testkjs
+testkjs_static
+
+END

@@ -1,0 +1,46 @@
+10
+
+dir
+1152814
+svn://anonsvn.kde.org/home/kde/trunk/KDE/kdelibs/kdecore/auth/backends
+svn://anonsvn.kde.org/home/kde
+
+
+
+2010-06-13T22:52:23.313870Z
+1137666
+dafre
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+283d02a7-25f6-0310-bc7c-ecb5cbfe19da
+
+mac
+dir
+
+polkit-1
+dir
+
+fake
+dir
+
+fakehelper
+dir
+
+policykit
+dir
+
+dbus
+dir
+

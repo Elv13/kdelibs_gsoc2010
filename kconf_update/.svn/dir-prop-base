@@ -1,0 +1,16 @@
+K 10
+svn:ignore
+V 140
+.deps
+Doxyfile
+dummy.cpp
+kconf_update
+kconf_update.la
+kdeinit_kconf_update.cpp
+kdeinit_kconf_update.la.cpp
+.libs
+Makefile
+Makefile.in
+*.moc
+
+END

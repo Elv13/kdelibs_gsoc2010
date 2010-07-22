@@ -1,0 +1,13 @@
+K 10
+svn:ignore
+V 81
+.deps
+kdocktest
+kdockwidgetdemo
+kdockwidgettest
+.libs
+Makefile
+Makefile.in
+*.moc
+
+END

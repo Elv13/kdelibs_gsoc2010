@@ -1,0 +1,16 @@
+K 10
+svn:ignore
+V 128
+.deps
+kded_proxyscout.la
+*.kidl
+kpac_dhcp_helper
+.libs
+Makefile
+Makefile.in
+*.moc
+proxyscout.kidl
+proxyscout_skel.cpp
+*_skel.c*
+
+END

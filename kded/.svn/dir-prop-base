@@ -1,0 +1,28 @@
+K 10
+svn:ignore
+V 314
+.deps
+Doxyfile
+kbuildsycoca
+kbuildsycoca.la
+kded
+kded.la
+kdedmodule.kidl
+kdedmodule_skel.cpp
+kdedmodule_stub.cpp
+kdedmodule_stub.h
+kdeinit_kbuildsycoca.cpp
+kdeinit_kbuildsycoca.la.cpp
+kdeinit_kded.cpp
+kdeinit_kded.la.cpp
+kde-menu
+kdontchangethehostname
+*.kidl
+.libs
+Makefile
+Makefile.in
+*.moc
+*_skel.c*
+*_stub.cpp
+
+END

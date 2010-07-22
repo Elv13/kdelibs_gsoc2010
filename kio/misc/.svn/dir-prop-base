@@ -1,0 +1,24 @@
+K 10
+svn:ignore
+V 257
+.deps
+kdeinit_kio_uiserver.cpp
+kdeinit_kio_uiserver.la.cpp
+*.kidl
+kio_uiserver
+kio_uiserver.la
+kmailservice
+ktelnetservice
+.libs
+Makefile
+Makefile.in
+*.moc
+observer.kidl
+observer_stub.cpp
+observer_stub.h
+*_skel.c*
+*_stub.cpp
+uiserver.kidl
+uiserver_skel.cpp
+
+END

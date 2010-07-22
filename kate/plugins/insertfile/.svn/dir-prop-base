@@ -1,0 +1,13 @@
+K 10
+svn:ignore
+V 98
+.deps
+ktexteditor_insertfile.la
+.libs
+Makefile
+Makefile.in
+Makefile.rules
+Makefile.rules.in
+*.moc
+
+END

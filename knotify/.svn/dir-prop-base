@@ -1,0 +1,21 @@
+K 10
+svn:ignore
+V 198
+*.kidl
+*.moc
+*_skel.c*
+.deps
+.libs
+CMakeFiles
+DartTestfile.txt
+Makefile
+Makefile.in
+cmake_install.cmake
+install_icons.cmake
+kdeinit_knotify.cpp
+kdeinit_knotify.la.cpp
+knotify
+knotify.la
+knotifytest
+
+END

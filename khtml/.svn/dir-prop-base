@@ -1,0 +1,37 @@
+K 10
+svn:ignore
+V 398
+*.kidl
+*.moc
+*_skel.c*
+.deps
+.libs
+CMakeFiles
+DartTestfile.txt
+Doxyfile
+Makefile
+Makefile.in
+cmake_install.cmake
+dummy.cpp
+htmlpageinfo.cc
+htmlpageinfo.cpp
+htmlpageinfo.h
+imgdummy.cpp
+install_icons.cmake
+khtml_iface.kidl
+khtml_iface_skel.cpp
+khtmlimagepart.la
+libkhtml.la
+libkhtmlpart.la
+testkhtml
+testkhtml_static
+testregression
+testregressiongui
+test_regression_gui.h
+qrc_test_regression_gui.cpp
+
+K 19
+svnmerge-integrated
+V 38
+/branches/work/~clicea/khtml:1-1099452
+END

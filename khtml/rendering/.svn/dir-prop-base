@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 57
+.deps
+libkhtmlrender.la
+.libs
+Makefile
+Makefile.in
+*.moc
+
+END

@@ -1,0 +1,52 @@
+10
+
+dir
+1152814
+svn://anonsvn.kde.org/home/kde/trunk/KDE/kdelibs/kjsembed/examples
+svn://anonsvn.kde.org/home/kde
+
+
+
+2009-04-21T21:57:25.513555Z
+957380
+cfeck
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+283d02a7-25f6-0310-bc7c-ecb5cbfe19da
+
+fancy
+dir
+
+calc
+dir
+
+console
+dir
+
+tests
+dir
+
+scribble
+dir
+
+grammar
+dir
+
+docviewer
+dir
+
+kjsconsole
+dir
+

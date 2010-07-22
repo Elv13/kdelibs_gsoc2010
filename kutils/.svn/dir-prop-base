@@ -1,0 +1,17 @@
+K 10
+svn:ignore
+V 135
+core
+.deps
+Doxyfile
+kcmoduleproxyIface.kidl
+kcmoduleproxyIface_skel.cpp
+*.kidl
+libkutils.la
+.libs
+Makefile
+Makefile.in
+*.moc
+*_skel.c*
+
+END

@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 69
+.deps
+ktexteditor_autobookmarker.la
+.libs
+Makefile
+Makefile.in
+*.moc
+
+END

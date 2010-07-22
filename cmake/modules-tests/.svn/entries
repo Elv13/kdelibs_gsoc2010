@@ -1,0 +1,196 @@
+10
+
+dir
+1152814
+svn://anonsvn.kde.org/home/kde/trunk/KDE/kdelibs/cmake/modules-tests
+svn://anonsvn.kde.org/home/kde
+
+
+
+2008-12-23T09:40:41.268951Z
+900551
+neundorf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+283d02a7-25f6-0310-bc7c-ecb5cbfe19da
+
+OpenEXR
+dir
+
+ENCHANT
+dir
+
+LibXslt
+dir
+
+BlueZ
+dir
+
+Blitz
+dir
+
+Xmms
+dir
+
+QCA2
+dir
+
+PCRE
+dir
+
+GStreamer
+dir
+
+USB
+dir
+
+LCMS
+dir
+
+Flex
+dir
+
+AGG
+dir
+
+Sqlite
+dir
+
+Strigi
+dir
+
+Xine
+dir
+
+FFmpeg
+dir
+
+Flac
+dir
+
+RunAllModuleTests.cmake
+file
+
+
+
+
+2010-07-22T03:59:00.000000Z
+5e8ddec89b2d552135d499b4385077e7
+2008-12-23T09:40:41.268951Z
+900551
+neundorf
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2019
+
+QImageBlitz
+dir
+
+Eigen2
+dir
+
+TestFindPackage.cmake
+file
+
+
+
+
+2010-07-22T03:59:00.000000Z
+0c5d7c3886e86ebe17d2a4cd1ffb2cf9
+2008-11-16T16:47:43.670136Z
+885115
+neundorf
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1899
+
+readme.txt
+file
+
+
+
+
+2010-07-22T03:59:00.000000Z
+3f5b968b84a70664723ff8fe68b49154
+2008-11-14T18:48:27.489349Z
+884359
+neundorf
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+286
+
+LibArt
+dir
+
+GObject
+dir
+

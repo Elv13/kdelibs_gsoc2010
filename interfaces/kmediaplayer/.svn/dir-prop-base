@@ -1,0 +1,15 @@
+K 10
+svn:ignore
+V 123
+.deps
+*.kidl
+libkmediaplayer.la
+.libs
+Makefile
+Makefile.in
+*.moc
+playerdcopobject.kidl
+playerdcopobject_skel.cpp
+*_skel.c*
+
+END

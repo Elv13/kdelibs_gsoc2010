@@ -1,0 +1,13 @@
+K 10
+svn:ignore
+V 70
+.deps
+kfileaudiopreview.la
+*.la
+.libs
+*.lo
+Makefile
+Makefile.in
+*.moc
+
+END

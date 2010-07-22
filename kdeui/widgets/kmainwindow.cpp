@@ -1044,6 +1044,14 @@ bool KMainWindow::event( QEvent* ev )
         break;
     case QEvent::Polish:
         d->polish(this);
+        break;    
+    case QEvent::KeyPress:
+	{
+	  if (((QKeyEvent*) ev)->key() == Qt::Key_Alt) {
+	    if ((hasMenuBar()) && (menuBar()))
+	    menuBar()->setHidden(!(menuBar()->isHidden()));
+	  }
+	}
         break;
     case QEvent::ChildPolished:
         {

@@ -31,6 +31,7 @@
 #include <kshortcut.h>
 
 #include <QtGui/QWidgetAction>
+#include <QMimeData>
 
 class KIcon;
 class KShapeGesture;
@@ -533,6 +534,20 @@ Q_SIGNALS:
      * subject to be changed by the global shortcuts kcm.
      */
     void globalShortcutChanged(const QKeySequence&);
+    
+    /**
+     * Emitted when data is dropped on a widget representing
+     * the action (like KToolButton)
+     */
+    void triggered(const QMimeData*);
+    
+public Q_SLOTS:
+    /**
+     * Trigger the action with an argument
+     *
+     * @param data the Mime data dropped on the action representation
+     */
+    void dataTrigger(const QMimeData* data);
 
 private:
     friend class KGlobalAccelPrivate; // Needs access to the component

@@ -28,6 +28,8 @@
 #include <kdeui_export.h>
 
 #include <QtGui/QToolBar>
+#include <kaction.h>
+#include "kactioncontainer_p.h"
 
 class QDomElement;
 
@@ -50,7 +52,7 @@ class KXMLGUIClient;
   *
   * @author Reginald Stadlbauer <reggie@kde.org>, Stephan Kulow <coolo@kde.org>, Sven Radej <radej@kde.org>, Hamish Rodda <rodda@kde.org>.
   */
-class KDEUI_EXPORT KToolBar : public QToolBar
+class KDEUI_EXPORT KToolBar : public QToolBar, public KActionContainer
 {
     Q_OBJECT
 
@@ -109,6 +111,21 @@ public:
      * Destroys the toolbar.
      */
     virtual ~KToolBar();
+    
+    /**
+     * Function overloading QToolBar::AddAction used for KAction specific features, such as drag and drop support
+     */
+    void addAction(QAction* action);
+    virtual void addAction(KAction* action);
+    virtual void addAction(KAction* action, Qt::ToolButtonStyle style);
+    QAction *addAction ( const QString & text );
+    QAction *addAction ( const QIcon & icon, const QString & text );
+    QAction *addAction ( const QString & text, const QObject * receiver, const char * member );
+    QAction *addAction ( const QIcon & icon, const QString & text, const QObject * receiver, const char * member );
+    virtual void insertAction (QAction* before, KAction* action);
+    virtual void insertAction (QAction* before, KAction* action, Qt::ToolButtonStyle style);
+    virtual void insertAction (QAction* before, KAction* action, QString style);
+    void insertAction (QAction* before, QAction* action);
 
     /**
      * Returns the main window that this toolbar is docked with.
@@ -207,7 +224,6 @@ public:
 
   protected Q_SLOTS:
     virtual void slotMovableChanged(bool movable);
-
   protected:
     virtual void contextMenuEvent( QContextMenuEvent* );
     virtual void actionEvent( QActionEvent* );

@@ -53,8 +53,11 @@
 #include <kstandardaction.h>
 #include <ktoggleaction.h>
 #include <kxmlguifactory.h>
+#include <ktoolbutton.h>
 
 #include <kconfiggroup.h>
+
+#include <kmessagebox.h> //TODO delete
 
 /*
  Toolbar settings (e.g. icon size or toolButtonStyle)
@@ -725,6 +728,75 @@ KToolBar::~KToolBar()
 {
   delete d->contextLockAction;
   delete d;
+}
+
+void KToolBar::addAction(QAction* action) 
+{
+  QToolBar::addAction(action);
+}
+
+void KToolBar::addAction(KAction* action, Qt::ToolButtonStyle style)
+{
+  insertAction(0,action,style);
+}
+
+void KToolBar::addAction(KAction* action)
+{
+  addAction(action,toolButtonStyle());
+}
+
+QAction* KToolBar::addAction ( const QString & text )
+{
+  return QToolBar::addAction(text);
+}
+
+QAction* KToolBar::addAction ( const QIcon & icon, const QString & text )
+{
+  return QToolBar::addAction(icon,text);
+}
+
+QAction* KToolBar::addAction ( const QString & text, const QObject * receiver, const char * member )
+{
+  return QToolBar::addAction(text,receiver,member);
+}
+
+QAction* KToolBar::addAction ( const QIcon & icon, const QString & text, const QObject * receiver, const char * member )
+{
+  return QToolBar::addAction(icon,text,receiver,member);
+}
+
+void KToolBar::insertAction (QAction* before, KAction* action)
+{
+  insertAction(before,action,toolButtonStyle());
+}
+
+void KToolBar::insertAction (QAction* before, KAction* action, QString style)
+{
+  if (style == "alongside")
+    insertAction(before,action,Qt::ToolButtonTextBesideIcon);
+  else if (style == "under")
+    insertAction(before,action,Qt::ToolButtonTextUnderIcon);
+  else if (style == "icon")
+    insertAction(before,action,Qt::ToolButtonIconOnly);
+  else if (style == "text")
+    insertAction(before,action,Qt::ToolButtonTextOnly);
+  else
+    insertAction(before,action,toolButtonStyle());
+}
+
+void KToolBar::insertAction (QAction* before, KAction* action, Qt::ToolButtonStyle style)
+{
+  KToolButton* toolButton = new KToolButton(this);
+  toolButton->setToolButtonStyle(style);
+  toolButton->setDefaultAction(action);
+  insertWidget(before, toolButton);
+  connect(toolButton, SIGNAL(mimeDropped(const QMimeData*)), action, SLOT(dataTrigger(const QMimeData*)));
+  connect(toolButton, SIGNAL(clicked(bool)), action, SLOT(setChecked(bool)));
+}
+
+void KToolBar::insertAction (QAction* before, QAction* action)
+{
+  QWidget::insertAction(before,action);
 }
 
 void KToolBar::setContextMenuEnabled(bool enable)

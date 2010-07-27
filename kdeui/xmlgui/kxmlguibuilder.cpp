@@ -34,11 +34,14 @@
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kdebug.h>
+#include <kmessagebox.h>
 #include <QtXml/QDomElement>
+#include <QtGui/QDockWidget>
 #include <QtCore/QObject>
 #include <QtCore/QMutableStringListIterator>
 #include "kmenumenuhandler_p.h"
 #include <kcomponentdata.h>
+#include <ktoolbox.h>
 
 using namespace KDEPrivate;
 
@@ -55,6 +58,7 @@ class KXMLGUIBuilderPrivate
     QString tagMenu;
     QString tagToolBar;
     QString tagStatusBar;
+    QString tagToolBox;
 
     QString tagSeparator;
     QString tagTearOffHandle;
@@ -62,6 +66,8 @@ class KXMLGUIBuilderPrivate
 
     QString attrName;
     QString attrLineSeparator;
+    
+    QString attrPosition;
 
     QString attrText1;
     QString attrText2;
@@ -85,6 +91,7 @@ KXMLGUIBuilder::KXMLGUIBuilder( QWidget *widget )
   d->tagMenuBar = QLatin1String( "menubar" );
   d->tagMenu = QLatin1String( "menu" );
   d->tagToolBar = QLatin1String( "toolbar" );
+  d->tagToolBox = QLatin1String( "toolbox" );
   d->tagStatusBar = QLatin1String( "statusbar" );
 
   d->tagSeparator = QLatin1String( "separator" );
@@ -93,6 +100,8 @@ KXMLGUIBuilder::KXMLGUIBuilder( QWidget *widget )
 
   d->attrName = QLatin1String( "name" );
   d->attrLineSeparator = QLatin1String( "lineseparator" );
+  
+  d->attrPosition = QLatin1String( "position" );
 
   d->attrText1 = QLatin1String( "text" );
   d->attrText2 = QLatin1String( "Text" );
@@ -117,7 +126,7 @@ QWidget *KXMLGUIBuilder::widget()
 QStringList KXMLGUIBuilder::containerTags() const
 {
   QStringList res;
-  res << d->tagMenu << d->tagToolBar << d->tagMainWindow << d->tagMenuBar << d->tagStatusBar;
+  res << d->tagMenu << d->tagToolBar << d->tagToolBox << d->tagMainWindow << d->tagMenuBar << d->tagStatusBar;
 
   return res;
 }
@@ -222,6 +231,34 @@ QWidget *KXMLGUIBuilder::createContainer( QWidget *parent, int index, const QDom
     bar->loadState( element );
 
     return bar;
+  }
+  
+  if ( tagName == d->tagToolBox ) {
+    QByteArray name = element.attribute( d->attrName ).toUtf8();
+
+    KToolBox *box = static_cast<KToolBox*>(d->m_widget->findChild<QDockWidget*>( name ));
+    if( !box )
+    {
+       box = new KToolBox(d->m_widget);
+    }
+
+    if ( qobject_cast<KMainWindow*>( d->m_widget ) )
+    {
+        //if ( d->m_client && !d->m_client->xmlFile().isEmpty() )
+            //box->setXMLGUIClient( d->m_client );
+// 	if (!(element.hasAttribute( d->attrPosition )) || (element.attribute(d->attrPosition) == "left"))
+// 	  qobject_cast<KMainWindow*>(d->m_widget)->addDockWidget(Qt::LeftDockWidgetArea,box);
+// 	else if (element.attribute(d->attrPosition) == "right")
+// 	  qobject_cast<KMainWindow*>(d->m_widget)->addDockWidget(Qt::RightDockWidgetArea,box);
+// 	else if (element.attribute(d->attrPosition) == "top")
+// 	    qobject_cast<KMainWindow*>(d->m_widget)->addDockWidget(Qt::TopDockWidgetArea,box);
+// 	else if (element.attribute(d->attrPosition) == "bottom")
+// 	  qobject_cast<KMainWindow*>(d->m_widget)->addDockWidget(Qt::BottomDockWidgetArea,box);
+    }
+    
+    box->loadState( element );
+
+    return box;
   }
 
   if ( tagName == d->tagStatusBar ) {

@@ -22,9 +22,14 @@
 #include "kxmlguibuilder.h"
 
 #include <QtGui/QWidget>
+#include <QtGui/QToolBar>
+#include <QtGui/QToolButton>
 
 #include <kglobal.h>
 #include <kdebug.h>
+
+#include <ktoolbar.h>
+#include <ktoolbox.h>
 
 #include <assert.h>
 #include <kcomponentdata.h>
@@ -614,6 +619,7 @@ void BuildHelper::processActionOrCustomElement( const QDomElement &e, bool isAct
         parentNode->adjustMergingIndices( 1, it );
 }
 
+#include <kmessagebox.h>
 bool BuildHelper::processActionElement( const QDomElement &e, int idx )
 {
     assert( m_state.guiClient );
@@ -629,8 +635,47 @@ bool BuildHelper::processActionElement( const QDomElement &e, int idx )
     if (idx >= 0 && idx < parentNode->container->actions().count())
       before = parentNode->container->actions()[idx];
 
-    parentNode->container->insertAction(before, action);
-
+    if (qobject_cast<KAction *>(action)) {
+//       if ((qobject_cast<KToolBar *>(parentNode->container))  || (qobject_cast<KToolBox *>(parentNode->container))) {
+// 	((KActionContainer *)parentNode->container)->insertAction(before, qobject_cast<KAction *>(action));
+//       }
+      if (qobject_cast<KToolBar *>(parentNode->container))
+	qobject_cast<KToolBar *>(parentNode->container)->insertAction(before, qobject_cast<KAction *>(action),e.attribute("textPosition"));
+      else if (qobject_cast<KToolBox *>(parentNode->container))
+	qobject_cast<KToolBox *>(parentNode->container)->insertAction(before, qobject_cast<KAction *>(action),e.attribute("textPosition"));
+      else
+	parentNode->container->insertAction(qobject_cast<KAction *>(before), qobject_cast<KAction *>(action));
+    }
+    else
+    {
+      parentNode->container->insertAction(qobject_cast<KAction *>(before), qobject_cast<KAction *>(action));
+    }
+    
+    //Hack for toolbar buttons
+    QToolBar* toolbar = qobject_cast<QToolBar *>(parentNode->container);
+    if (toolbar) {
+        QToolButton* button = qobject_cast<QToolButton *>(toolbar->widgetForAction(action));
+        if ((button) && (e.hasAttribute("textPosition"))) {
+	  if (e.attribute("textPosition") == "alongside")
+            button->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+	  else if (e.attribute("textPosition") == "under")
+	    button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+	  else if (e.attribute("textPosition") == "icon")
+	    button->setToolButtonStyle(Qt::ToolButtonIconOnly);
+	  else if (e.attribute("textPosition") == "text")
+	    button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	}
+	
+	if ((button) && (e.hasAttribute("icon"))) {
+	  button->setIcon(KIcon(e.attribute("icon")));
+	}
+	
+	//BUG does not really work, need invertigation
+	if ((button) && (e.hasAttribute("text"))) {
+	  button->setText(e.attribute("text"));
+	}
+    }
+    
     // save a reference to the plugged action, in order to properly unplug it afterwards.
     containerClient->actions.append( action );
 

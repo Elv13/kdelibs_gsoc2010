@@ -244,6 +244,8 @@ set(kdeui_LIB_SRCS
  widgets/ktimezonewidget.cpp
  widgets/ktitlewidget.cpp
  widgets/ktoolbar.cpp
+ widgets/ktoolbutton.cpp
+ widgets/ktoolbox.cpp
  widgets/kurllabel.cpp
  widgets/kvbox.cpp
  widgets/kxyselector.cpp

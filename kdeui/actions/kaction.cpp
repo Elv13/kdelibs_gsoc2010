@@ -131,6 +131,10 @@ bool KAction::event(QEvent *event)
     return QAction::event(event);
 }
 
+void KAction::dataTrigger(const QMimeData* data) {
+    emit triggered(data);
+}
+
 
 //---------------------------------------------------------------------
 // KAction

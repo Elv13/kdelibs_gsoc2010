@@ -8,7 +8,7 @@
 class KToolBar2 : public KToolBar {
   public:
     KToolBar2(QWidget* parent);
-    KToolBar2(const QString &objectName, QWidget *parent, bool  readConfig=true);
+    KToolBar2(const QString &objectName, QWidget *parent, bool readConfig=true);
     void addAction(KArgAction* action);
     void addAction(KAction* action);
 };

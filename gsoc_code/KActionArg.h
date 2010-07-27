@@ -8,18 +8,18 @@ class KArgAction : public KAction {
   public:
     KArgAction(QObject* parent) : KAction(parent) {setCheckable(false);}
   public slots:
-    void toggle(QMimeData &text) {
+    void toggle(QMimeData* text) {
       emit toggled(text);
     }
     
-    void toggle(QString text) {
-      QMimeData data;
-      data.setText(text);
-      emit toggled(data);
-    }
+//     void toggle(QString text) {
+//       QMimeData* data = new;
+//       data.setText(text);
+//       emit toggled(data);
+//     }
     
   signals:
-    void toggled(QMimeData&);
+    void toggled(QMimeData*);
 };
 
 #endif

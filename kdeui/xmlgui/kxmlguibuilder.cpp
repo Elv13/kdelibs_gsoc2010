@@ -63,9 +63,11 @@ class KXMLGUIBuilderPrivate
     QString tagSeparator;
     QString tagTearOffHandle;
     QString tagMenuTitle;
+    QString tagSpacer;
 
     QString attrName;
     QString attrLineSeparator;
+    QString attrWidth;
     
     QString attrPosition;
 
@@ -97,9 +99,11 @@ KXMLGUIBuilder::KXMLGUIBuilder( QWidget *widget )
   d->tagSeparator = QLatin1String( "separator" );
   d->tagTearOffHandle = QLatin1String( "tearoffhandle" );
   d->tagMenuTitle = QLatin1String( "title" );
+  d->tagSpacer = QLatin1String( "spacer" );
 
   d->attrName = QLatin1String( "name" );
   d->attrLineSeparator = QLatin1String( "lineseparator" );
+  d->attrWidth = QLatin1String( "width" );
   
   d->attrPosition = QLatin1String( "position" );
 
@@ -316,7 +320,7 @@ void KXMLGUIBuilder::removeContainer( QWidget *container, QWidget *parent, QDomE
 QStringList KXMLGUIBuilder::customTags() const
 {
   QStringList res;
-  res << d->tagSeparator << d->tagTearOffHandle << d->tagMenuTitle;
+  res << d->tagSeparator << d->tagTearOffHandle << d->tagMenuTitle << d->tagSpacer;
   return res;
 }
 
@@ -397,6 +401,13 @@ QAction* KXMLGUIBuilder::createCustomElement( QWidget *parent, int index, const 
       } else {
         return m->addTitle( i18nText, before );
       }
+    }
+  }
+  else if (tagName == d->tagSpacer)
+  {
+    if ( KToolBar *bar = qobject_cast<KToolBar*>( parent ) )
+    {
+      bar->insertSpacer(before,element.attribute(d->attrWidth));
     }
   }
 

@@ -29,11 +29,14 @@
 #include <config.h>
 
 #include <QtCore/QPointer>
+#include <QtCore/QHash>
 #include <QtGui/QDesktopWidget>
 #include <QtGui/QFrame>
 #include <QtGui/QLayout>
 #include <QtGui/QMouseEvent>
 #include <QtGui/QToolButton>
+#include <QtGui/QSpacerItem>
+#include <QtGui/QHBoxLayout>
 #include <QtXml/QDomElement>
 
 #include <kaction.h>
@@ -118,6 +121,7 @@ class KToolBar::Private
     void slotContextTextUnder();
     void slotContextIconSize();
     void slotLockToolBars(bool lock);
+    void slotUpdateSpacer(Qt::Orientation);
 
     void init(bool readConfig = true, bool isMainToolBar = false);
     QString getPositionAsString() const;
@@ -137,6 +141,8 @@ class KToolBar::Private
     bool unlockedMovable : 1;
     static bool s_editable;
     static bool s_locked;
+    
+    QHash<QWidget*,uint> m_spacers;
 
     KXMLGUIClient *xmlguiClient;
 
@@ -239,6 +245,10 @@ void KToolBar::Private::init(bool readConfig, bool _isMainToolBar)
 
   connect(q, SIGNAL(movableChanged(bool)),
            q, SLOT(slotMovableChanged(bool)));
+	   
+  
+  connect(q,SIGNAL(orientationChanged(Qt::Orientation)),
+	  q,SLOT(slotUpdateSpacer(Qt::Orientation)));
 
   q->setAcceptDrops(true);
 
@@ -465,6 +475,22 @@ void KToolBar::Private::slotAppearanceChanged()
 {
     loadKDESettings();
     applyCurrentSettings();
+}
+
+void KToolBar::Private::slotUpdateSpacer(Qt::Orientation orientation)
+{
+  foreach (QWidget* widget, m_spacers.keys()) {
+    if (m_spacers[widget]) {
+      if (orientation == Qt::Horizontal) {
+	widget->setMinimumSize(m_spacers[widget],0);
+	widget->setMaximumSize(m_spacers[widget],0);
+      }
+      else {
+	widget->setMinimumSize(0,m_spacers[widget]);
+	widget->setMaximumSize(0,m_spacers[widget]);
+      }
+    }
+  }
 }
 
 void KToolBar::Private::loadKDESettings()
@@ -797,6 +823,33 @@ void KToolBar::insertAction (QAction* before, KAction* action, Qt::ToolButtonSty
 void KToolBar::insertAction (QAction* before, QAction* action)
 {
   QWidget::insertAction(before,action);
+}
+
+void KToolBar::insertSpacer (QAction* before, QString width)
+{
+  QWidget* spacer = new QWidget(this);
+  if (!width.isEmpty()) {
+    if (orientation() == Qt::Horizontal) {
+      spacer->setMinimumSize(width.toInt(),0);
+      spacer->setMaximumSize(width.toInt(),0);
+    }
+    else {
+      spacer->setMinimumSize(0,width.toInt());
+      spacer->setMaximumSize(0,width.toInt());
+    }
+  }
+  else {
+    QHBoxLayout* layout = new QHBoxLayout(spacer);
+    layout->addItem(new QSpacerItem(0, 20, QSizePolicy::Expanding, QSizePolicy::Expanding));
+  }
+  spacer->setSizePolicy(QSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred));
+  insertWidget(before,spacer);
+  d->m_spacers[spacer] = (width.isEmpty())?0:width.toInt();
+}
+
+void KToolBar::addSpacer (QString width)
+{
+  insertSpacer(0,width);
 }
 
 void KToolBar::setContextMenuEnabled(bool enable)

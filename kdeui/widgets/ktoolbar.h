@@ -126,6 +126,20 @@ public:
     virtual void insertAction (QAction* before, KAction* action, Qt::ToolButtonStyle style);
     virtual void insertAction (QAction* before, KAction* action, QString style);
     void insertAction (QAction* before, QAction* action);
+    
+    /**
+     * Insert a spacer in to toolbar just after "before"
+     * @param before The action preceeding the spacer
+     * @param width Optional width of the spacer, "" or 0 = auto
+     * @since 4.6
+     */
+    void insertSpacer (QAction* before, QString width = "");
+    
+    /**
+     * Wrapper around insertSpacer() to match Qt api for spacer
+     * @param width Optional width of the spacer, "" or 0 = auto
+     */
+    void addSpacer (QString width = "");
 
     /**
      * Returns the main window that this toolbar is docked with.
@@ -254,6 +268,7 @@ public:
     Q_PRIVATE_SLOT( d, void slotContextTextUnder() )
     Q_PRIVATE_SLOT( d, void slotContextIconSize() )
     Q_PRIVATE_SLOT( d, void slotLockToolBars( bool ) )
+    Q_PRIVATE_SLOT( d, void slotUpdateSpacer( Qt::Orientation ) )
 };
 
 #endif

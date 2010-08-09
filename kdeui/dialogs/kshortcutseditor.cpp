@@ -419,7 +419,7 @@ qDebug() << "salut3";
         changeKeyShortcut(item, column, newShortcut.value<QKeySequence>());
     qDebug() << "salut6";
     }
-    else if (column == RockerGesture/*ShapeGesture*/){ //BUG
+    else if (column == ShapeGesture){ //BUG
         changeShapeGesture(item, newShortcut.value<KShapeGesture>());
     qDebug() << "salut7";
     }
@@ -452,6 +452,7 @@ void KShortcutsEditorPrivate::changeShapeGesture(KShortcutsEditorItem *item, con
   qDebug() << "salut2";
     if (capture == item->m_action->shapeGesture())
         return;
+    qDebug() << "ligne 455";
 
     if (capture.isValid()) {
         bool conflict = false;
@@ -474,11 +475,15 @@ void KShortcutsEditorPrivate::changeShapeGesture(KShortcutsEditorItem *item, con
             }
         }
 
-        if (conflict && !stealShapeGesture(otherItem, capture))
+        if (conflict && !stealShapeGesture(otherItem, capture)) {
+	    qDebug() << "conflict, returning";
             return;
+	}
     }
 
+qDebug() << "about to set text";
     item->setShapeGesture(capture);
+    item->setText(ShapeGesture,"test");
 }
 
 

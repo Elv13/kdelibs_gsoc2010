@@ -211,8 +211,10 @@ void KShortcutsEditorDelegate::itemActivated(QModelIndex index)
 	    connect(m_editor, SIGNAL(shapeGestureChanged(const KShapeGesture&)), this, SLOT(shapeGestureChanged(const KShapeGesture&)));
 
         } else if (column == ShapeGesture) {
-            m_editor = new QLabel("<i>A towel</i>", viewport);
-
+	    qDebug() << "I am here2";
+	    GestureEditWidget *editor = new GestureEditWidget(viewport);
+            m_editor = editor;
+	    connect(m_editor, SIGNAL(shapeGestureChanged(const KShapeGesture&)), this, SLOT(shapeGestureChanged(const KShapeGesture&)));
         } else
             return;
 

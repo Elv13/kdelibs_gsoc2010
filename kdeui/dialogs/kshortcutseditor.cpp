@@ -296,8 +296,8 @@ void KShortcutsEditorPrivate::initGUI( KShortcutsEditor::ActionTypes types, KSho
     ui.searchFilter->searchLine()->setTreeWidget(ui.list); // Plug into search line
     ui.list->header()->setResizeMode(QHeaderView::ResizeToContents);
     ui.list->header()->hideSection(GlobalAlternate);  //not expected to be very useful
-    ui.list->header()->hideSection(ShapeGesture);  //mouse gestures didn't make it in time...
-    ui.list->header()->hideSection(RockerGesture);
+    //ui.list->header()->hideSection(ShapeGesture);  //mouse gestures didn't make it in time...
+    //ui.list->header()->hideSection(RockerGesture);
     if (!(actionTypes & KShortcutsEditor::GlobalAction)) {
         ui.list->header()->hideSection(GlobalPrimary);
     } else if (!(actionTypes & ~KShortcutsEditor::GlobalAction)) {
@@ -414,13 +414,21 @@ void KShortcutsEditorPrivate::capturedShortcut(const QVariant &newShortcut, cons
     int column = index.column();
     KShortcutsEditorItem *item = itemFromIndex(ui.list, index);
     Q_ASSERT(item);
-
-    if (column >= LocalPrimary && column <= GlobalAlternate)
+qDebug() << "salut3";
+    if (column >= LocalPrimary && column <= GlobalAlternate) {
         changeKeyShortcut(item, column, newShortcut.value<QKeySequence>());
-    else if (column == ShapeGesture)
+    qDebug() << "salut6";
+    }
+    else if (column == RockerGesture/*ShapeGesture*/){ //BUG
         changeShapeGesture(item, newShortcut.value<KShapeGesture>());
-    else if (column == RockerGesture)
+    qDebug() << "salut7";
+    }
+    else if (column == RockerGesture){
         changeRockerGesture(item, newShortcut.value<KRockerGesture>());
+    qDebug() << "salut8";
+    }
+    else
+      qDebug() << "salut5";
 }
 
 
@@ -440,6 +448,8 @@ void KShortcutsEditorPrivate::changeKeyShortcut(KShortcutsEditorItem *item, uint
 
 void KShortcutsEditorPrivate::changeShapeGesture(KShortcutsEditorItem *item, const KShapeGesture &capture)
 {
+  
+  qDebug() << "salut2";
     if (capture == item->m_action->shapeGesture())
         return;
 
@@ -644,6 +654,8 @@ void KShortcutsEditorPrivate::printShortcuts() const
     shortcutTitleToColumn << qMakePair(i18n("Main:"), LocalPrimary);
     shortcutTitleToColumn << qMakePair(i18n("Alternate:"), LocalAlternate);
     shortcutTitleToColumn << qMakePair(i18n("Global:"), GlobalPrimary);
+    shortcutTitleToColumn << qMakePair(i18n("Shape:"), ShapeGesture);
+    
 
     for (int i = 0; i < root->childCount(); i++) {
         QTreeWidgetItem* item = root->child(i);

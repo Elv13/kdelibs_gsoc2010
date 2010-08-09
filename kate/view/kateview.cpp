@@ -582,6 +582,7 @@ void KateView::setupActions()
 
   a = ac->addAction( KStandardAction::Find, this, SLOT(find()) );
   a->setWhatsThis(i18n("Look up the first occurrence of a piece of text or regular expression."));
+  connect(a,SIGNAL(triggered(const QMimeData*)),this,SLOT(findData(const QMimeData*)));
   addAction(a);
 
   a = ac->addAction("edit_find_selected");
@@ -1030,6 +1031,11 @@ void KateView::slotLostFocus()
 void KateView::setDynWrapIndicators(int mode)
 {
   config()->setDynWordWrapIndicators (mode);
+}
+
+void KateView::findData(const QMimeData* data)
+{
+  
 }
 
 bool KateView::isOverwriteMode() const

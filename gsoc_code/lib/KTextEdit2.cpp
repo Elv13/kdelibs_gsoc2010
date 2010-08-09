@@ -14,7 +14,6 @@ KTextEdit2::KTextEdit2(QWidget* parent) :
   m_circularBufferEnd(-1),
   m_init(false),
   m_patternValueCounter(0)
-  
 {
   
 }
@@ -41,9 +40,6 @@ void KTextEdit2::mouseReleaseEvent(QMouseEvent* event)
     cur.select(QTextCursor::WordUnderCursor);
     QString word = cur.selectedText();
     if (event->button() == Qt::MidButton) {
-      //cur.movePosition(QTextCursor::StartOfWord);
-      //int positionStart = tc.position();
-      //cur.movePosition(QTextCursor::EndOfWord);
       qDebug() << "Button" << word;
       emit actionTriggered(word,m_buffer->text(QClipboard::Selection));
     }

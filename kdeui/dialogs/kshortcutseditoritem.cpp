@@ -122,6 +122,10 @@ QVariant KShortcutsEditorItem::data(int column, int role) const
                 return false;
             }
             return true;
+	case RockerGesture:
+	    return true;
+	case ShapeGesture:
+	    return true;
         default:
             return false;
         }
@@ -229,6 +233,8 @@ void KShortcutsEditorItem::setKeySequence(uint column, const QKeySequence &seq)
     } else {
         m_action->setShortcut(ks, KAction::ActiveShortcut);
     }
+
+    //TODO gesture goes here
 
     updateModified();
 }

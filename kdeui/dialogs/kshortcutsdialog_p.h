@@ -219,6 +219,37 @@ Q_DECLARE_METATYPE(KShapeGesture)
 Q_DECLARE_METATYPE(KRockerGesture)
 
 
+class GestureEditWidget : public TabConnectedWidget {
+    Q_OBJECT
+    public:
+        GestureEditWidget(QWidget *viewport/*, const QKeySequence &defaultSeq, const QKeySequence &activeSeq,
+                       bool allowLetterShortcuts*/);
+                       
+    private:
+        KPushButton* m_left;
+        KPushButton* m_right;
+        KPushButton* m_up;
+        KPushButton* m_down;
+        KPushButton* m_clear;
+        KPushButton* m_ok;
+        QLabel* m_currentGesture;
+    
+        QPolygon m_shape;
+        int m_currentX;
+        int m_currentY;
+        
+    private slots:
+        void leftClicked();
+        void rightClicked();
+        void upClicked();
+        void downClicked();
+        void clearClicked();
+        void okClicked();
+        
+    signals:
+        void shapeGestureChanged(const KShapeGesture&);
+};
+
 class KShortcutSchemesEditor: public QGroupBox {
     Q_OBJECT
 public:

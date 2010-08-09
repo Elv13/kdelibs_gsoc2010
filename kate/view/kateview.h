@@ -492,6 +492,7 @@ class KATEPART_TESTS_EXPORT KateView : public KTextEditor::View,
     void showViModeBar ();
     void hideViModeBar ();
     void setDynWrapIndicators(int mode);
+    void findData(const QMimeData* data);
 
   public:
     int getEol() const;

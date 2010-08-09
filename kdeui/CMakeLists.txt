@@ -83,6 +83,7 @@ set(kdeui_LIB_SRCS
  dialogs/kpixmapregionselectordialog.cpp
  dialogs/kprogressdialog.cpp
  dialogs/kshortcuteditwidget.cpp
+ dialogs/kgestureeditwidget.cpp
  dialogs/kshortcutseditordelegate.cpp
  dialogs/kshortcutseditoritem.cpp
  dialogs/kshortcutseditor.cpp

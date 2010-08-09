@@ -103,6 +103,11 @@ void KShortcutsEditorDelegate::stealShortcut(
                 || seq.matches(cut.alternate()) != QKeySequence::NoMatch) {
                 item->setKeySequence(LocalAlternate, QKeySequence());
             }
+            
+//             if (   cut.alternate().matches(seq) != QKeySequence::NoMatch
+//                 || seq.matches(cut.alternate()) != QKeySequence::NoMatch) {
+//                 item->setKeySequence(5, QKeySequence());
+//             }
             break;
         }
     }
@@ -122,6 +127,7 @@ QSize KShortcutsEditorDelegate::sizeHint(const QStyleOptionViewItem &option,
 //slot
 void KShortcutsEditorDelegate::itemActivated(QModelIndex index)
 {
+      qDebug() << "I am here3";
     //As per our constructor our parent *is* a QTreeWidget
     QTreeWidget *view = static_cast<QTreeWidget *>(parent());
 
@@ -150,7 +156,7 @@ void KShortcutsEditorDelegate::itemActivated(QModelIndex index)
     if (!index.data(ShowExtensionIndicatorRole).value<bool>()) {
         return;
     }
-
+    
     if (!isExtended(index)) {
         //we only want maximum ONE extender open at any time.
         if (m_editingIndex.isValid()) {
@@ -199,7 +205,10 @@ void KShortcutsEditorDelegate::itemActivated(QModelIndex index)
                     this, SLOT(stealShortcut(const QKeySequence&, KAction*)));
 
         } else if (column == RockerGesture) {
-            m_editor = new QLabel("A lame placeholder", viewport);
+	  qDebug() << "I am here2";
+	    GestureEditWidget *editor = new GestureEditWidget(viewport);
+            m_editor = editor;
+	    connect(m_editor, SIGNAL(shapeGestureChanged(const KShapeGesture&)), this, SLOT(shapeGestureChanged(const KShapeGesture&)));
 
         } else if (column == ShapeGesture) {
             m_editor = new QLabel("<i>A towel</i>", viewport);
@@ -334,6 +343,7 @@ void KShortcutsEditorDelegate::setCheckActionCollections(
 //slot
 void KShortcutsEditorDelegate::shapeGestureChanged(const KShapeGesture &gest)
 {
+  qDebug() << "Setting gesture";
     //this is somewhat verbose because the gesture types are not "built in" to QVariant
     QVariant ret = QVariant::fromValue(gest);
     emit shortcutChanged(ret, m_editingIndex);

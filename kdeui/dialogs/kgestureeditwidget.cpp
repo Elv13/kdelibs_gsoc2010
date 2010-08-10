@@ -45,25 +45,25 @@ GestureEditWidget::GestureEditWidget(QWidget *viewport) : TabConnectedWidget(vie
 
 void GestureEditWidget::leftClicked()
 {
-  m_currentGesture->setText(m_currentGesture->text()+"+left");
+  m_currentGesture->setText(m_currentGesture->text()+"L");
   m_shape << QPoint(m_currentX-20,m_currentY);
 }
 
 void GestureEditWidget::rightClicked()
 {
-  m_currentGesture->setText(m_currentGesture->text()+"+right");
+  m_currentGesture->setText(m_currentGesture->text()+"R");
   m_shape << QPoint(m_currentX+20,m_currentY);
 }
 
 void GestureEditWidget::upClicked()
 {
-  m_currentGesture->setText(m_currentGesture->text()+"+up");
+  m_currentGesture->setText(m_currentGesture->text()+"U");
   m_shape << QPoint(m_currentX,m_currentY+20);
 }
 
 void GestureEditWidget::downClicked()
 {
-  m_currentGesture->setText(m_currentGesture->text()+"+down");
+  m_currentGesture->setText(m_currentGesture->text()+"D");
   m_shape << QPoint(m_currentX,m_currentY-20);
 }
 
@@ -76,5 +76,6 @@ void GestureEditWidget::clearClicked()
 void GestureEditWidget::okClicked()
 {
   KShapeGesture* gesture = new KShapeGesture(m_shape);
+  gesture->setShapeName(m_currentGesture->text());
   emit shapeGestureChanged(*gesture);
 }

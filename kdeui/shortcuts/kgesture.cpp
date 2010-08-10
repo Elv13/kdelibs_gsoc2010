@@ -38,7 +38,8 @@ public:
     KShapeGesturePrivate(const KShapeGesturePrivate &other)
       : m_shape(other.m_shape),
         m_lengthTo(other.m_lengthTo),
-        m_curveLength(other.m_curveLength)
+        m_curveLength(other.m_curveLength),
+        m_friendlyName(other.m_friendlyName)
     {
     }
     QPolygon m_shape;
@@ -93,6 +94,7 @@ KShapeGesture::KShapeGesture(const QString &description)
 KShapeGesture::KShapeGesture(const KShapeGesture &other)
     : d(new KShapeGesturePrivate(*(other.d)))
 {
+  
 }
 
 
@@ -145,7 +147,7 @@ void KShapeGesture::setShape(const QPolygon &shape)
 
 void KShapeGesture::setShapeName(const QString &friendlyName)
 {
-    d->m_friendlyName = friendlyName;
+    d->m_friendlyName =friendlyName;
 }
 
 
@@ -364,6 +366,7 @@ KShapeGesture &KShapeGesture::operator=(const KShapeGesture &other)
     d->m_lengthTo = other.d->m_lengthTo;
     d->m_shape = other.d->m_shape;
     d->m_curveLength = other.d->m_curveLength;
+    d->m_friendlyName = other.d->m_friendlyName;
     return *this;
 }
 

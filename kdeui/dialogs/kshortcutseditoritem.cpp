@@ -234,8 +234,6 @@ void KShortcutsEditorItem::setKeySequence(uint column, const QKeySequence &seq)
         m_action->setShortcut(ks, KAction::ActiveShortcut);
     }
 
-    //TODO gesture goes here
-
     updateModified();
 }
 

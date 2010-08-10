@@ -127,7 +127,6 @@ QSize KShortcutsEditorDelegate::sizeHint(const QStyleOptionViewItem &option,
 //slot
 void KShortcutsEditorDelegate::itemActivated(QModelIndex index)
 {
-      qDebug() << "I am here3";
     //As per our constructor our parent *is* a QTreeWidget
     QTreeWidget *view = static_cast<QTreeWidget *>(parent());
 
@@ -205,13 +204,10 @@ void KShortcutsEditorDelegate::itemActivated(QModelIndex index)
                     this, SLOT(stealShortcut(const QKeySequence&, KAction*)));
 
         } else if (column == RockerGesture) {
-	  qDebug() << "I am here2";
-	    GestureEditWidget *editor = new GestureEditWidget(viewport);
-            m_editor = editor;
-	    connect(m_editor, SIGNAL(shapeGestureChanged(const KShapeGesture&)), this, SLOT(shapeGestureChanged(const KShapeGesture&)));
-
+// 	    GestureEditWidget *editor = new GestureEditWidget(viewport);
+//             m_editor = editor;
+// 	    connect(m_editor, SIGNAL(shapeGestureChanged(const KShapeGesture&)), this, SLOT(shapeGestureChanged(const KShapeGesture&)));
         } else if (column == ShapeGesture) {
-	    qDebug() << "I am here2";
 	    GestureEditWidget *editor = new GestureEditWidget(viewport);
             m_editor = editor;
 	    connect(m_editor, SIGNAL(shapeGestureChanged(const KShapeGesture&)), this, SLOT(shapeGestureChanged(const KShapeGesture&)));
@@ -345,7 +341,6 @@ void KShortcutsEditorDelegate::setCheckActionCollections(
 //slot
 void KShortcutsEditorDelegate::shapeGestureChanged(const KShapeGesture &gest)
 {
-  qDebug() << "Setting gesture";
     //this is somewhat verbose because the gesture types are not "built in" to QVariant
     QVariant ret = QVariant::fromValue(gest);
     emit shortcutChanged(ret, m_editingIndex);

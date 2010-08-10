@@ -414,21 +414,12 @@ void KShortcutsEditorPrivate::capturedShortcut(const QVariant &newShortcut, cons
     int column = index.column();
     KShortcutsEditorItem *item = itemFromIndex(ui.list, index);
     Q_ASSERT(item);
-qDebug() << "salut3";
-    if (column >= LocalPrimary && column <= GlobalAlternate) {
+    if (column >= LocalPrimary && column <= GlobalAlternate)
         changeKeyShortcut(item, column, newShortcut.value<QKeySequence>());
-    qDebug() << "salut6";
-    }
-    else if (column == ShapeGesture){ //BUG
+    else if (column == ShapeGesture)
         changeShapeGesture(item, newShortcut.value<KShapeGesture>());
-    qDebug() << "salut7";
-    }
-    else if (column == RockerGesture){
+    else if (column == RockerGesture)
         changeRockerGesture(item, newShortcut.value<KRockerGesture>());
-    qDebug() << "salut8";
-    }
-    else
-      qDebug() << "salut5";
 }
 
 
@@ -448,11 +439,8 @@ void KShortcutsEditorPrivate::changeKeyShortcut(KShortcutsEditorItem *item, uint
 
 void KShortcutsEditorPrivate::changeShapeGesture(KShortcutsEditorItem *item, const KShapeGesture &capture)
 {
-  
-  qDebug() << "salut2";
     if (capture == item->m_action->shapeGesture())
         return;
-    qDebug() << "ligne 455";
 
     if (capture.isValid()) {
         bool conflict = false;
@@ -475,15 +463,11 @@ void KShortcutsEditorPrivate::changeShapeGesture(KShortcutsEditorItem *item, con
             }
         }
 
-        if (conflict && !stealShapeGesture(otherItem, capture)) {
-	    qDebug() << "conflict, returning";
+        if (conflict && !stealShapeGesture(otherItem, capture))
             return;
-	}
     }
-
-qDebug() << "about to set text";
     item->setShapeGesture(capture);
-    item->setText(ShapeGesture,"test");
+    item->emitDataChanged();
 }
 
 
